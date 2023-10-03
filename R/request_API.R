@@ -10,7 +10,7 @@
 #' 
 #' @param date Can be on the form YYYY-MM-DD, YYYY-MM, or YYYY. The output will include only areas that existed at that very date. Dates in the database are local time and inclusive, meaning that 1947-03-01 will include a nation that gained independence on April 1 1947, according to the local timezone. 2011-05 will be interpreted as 2001-05-01, and 2011 will be interpreted as 2001-01-01. 
 #' 
-#' @param language Some parts of the data are avaiable in different languages, such as names of political entities. 
+#' @param language Some parts of the data are available in different languages, such as names of political entities. 
 #' 
 #' @return The function returns the requested data.
 #' 
@@ -24,7 +24,7 @@
 #' 
 #' @seealso \url{https://www.thenmap.net/}
 
-# install.packages(c("sf", "ggplot2", "httr"))
+# install.packages(c("sf", "ggplot2", "httr", "rjson"))
 
 library(sf)
 library(ggplot2)
@@ -56,7 +56,7 @@ request_API <- function(version,dataset,modules,date,language) {
       return(sf_object)
     }
   } else {
-    stop("Error fetching  data with status code: ", status_code(response))
+    stop("Error fetching data with status code: ", status_code(response))
   }
 }
 

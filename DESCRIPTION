@@ -8,5 +8,8 @@ Maintainer: Birgit Karlhuber <birgit@karlhuber.net> and Daniele Bozzoli <danbo82
 Description: More about what it does (maybe more than one line)
 License: GPL (>= 2) | file LICENCE
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+VignetteBuilder: knitr

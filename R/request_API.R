@@ -14,7 +14,7 @@
 #' 
 #' @return The function returns the requested data.
 #' 
-#' @import sf, ggplot2, httr, rjson
+#' @import sf, httr, rjson
 #' 
 #' @export
 #' 
@@ -26,10 +26,9 @@
 
 # install.packages(c("sf", "ggplot2", "httr", "rjson"))
 
-library(sf)
-library(ggplot2)
-library(httr)
-library(rjson)
+# library(sf)
+# library(httr)
+# library(rjson)
 
 request_API <- function(version,dataset,modules,date,language) {
   # stopifnot()
@@ -60,25 +59,12 @@ request_API <- function(version,dataset,modules,date,language) {
   }
 }
 
-version <- "v1" # v1, v2
-dataset <- "world-2" # ch-8 no-7 no-4 dk-7 se-7 se-4 us-4 gl-7 world-2
-modules <- "data" # data (info) geo (svg)
-date <- "2016-01-01" # YYYY-MM-DD, YYYY-MM, or YYYY
-language <- "fi"
+# version <- "v1" # v1, v2
+# dataset <- "world-2" # ch-8 no-7 no-4 dk-7 se-7 se-4 us-4 gl-7 world-2
+# modules <- "geo" # data (info) geo (svg)
+# date <- "2016-01-01" # YYYY-MM-DD, YYYY-MM, or YYYY
+# language <- "fi"
+# 
+# requested_data <- request_API(version,dataset,modules,date,language)
 
-requested_data <- request_API(version,dataset,modules,date,language)
-
-
-
-###########################################
-
-# plot the spatial data
-ggplot() +
-  geom_sf(data = requested_data) +
-  ggtitle("Historical Map Plot") +
-  theme_minimal()
-
-
-# for svg - give a picture
-svg_data <- GET("http://api.thenmap.net/v2/world-2/svg/2015")
 

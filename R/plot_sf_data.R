@@ -27,7 +27,7 @@ plot_sf_data <- function(sf_data){
   # plot the spatial data
   ggplot() +
     geom_sf(data = sf_data) +
-    ggtitle("Map Plot") +
+    ggtitle("Map") +
     theme_minimal()
 }
 

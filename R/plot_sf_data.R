@@ -2,7 +2,7 @@
 #' 
 #' This function can be used plot geo-data
 #'
-#' @param sf_data 
+#' @param sf_data geo-dataset in sf format
 #' 
 #' @return The function returns a geo-plot
 #' 
@@ -12,11 +12,11 @@
 #' 
 #' @examples
 #' library(Lab5)
-#' request_API("v1","world-2","geo","2016-01-01","fi")
+#' requested_data <- request_API("v1","world-2","geo","2016-01-01","fi")
+#' plot_sf_data(requested_data)
 #' 
 #' @seealso \url{https://www.thenmap.net/}
 
-# install.packages(c("sf", "ggplot2", "httr", "rjson"))
 
 # library(sf)
 # library(ggplot2)

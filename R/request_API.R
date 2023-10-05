@@ -12,7 +12,7 @@
 #' 
 #' @param language Some parts of the data are available in different languages, such as names of political entities. 
 #' 
-#' @return The function returns the requested data.
+#' @return The function returns the requested dataset.
 #' 
 #' @import sf, httr, rjson
 #' 
@@ -20,18 +20,21 @@
 #' 
 #' @examples
 #' library(Lab5)
-#' request_API("v1","world-2","geo","2016-01-01","fi")
+#' requested_data <- request_API("v1","world-2","geo","2016-01-01","fi")
 #' 
 #' @seealso \url{https://www.thenmap.net/}
 
-# install.packages(c("sf", "ggplot2", "httr", "rjson"))
 
 # library(sf)
 # library(httr)
 # library(rjson)
 
 request_API <- function(version,dataset,modules,date,language) {
-  # stopifnot()
+  
+  stopifnot(version %in% c("v1","v2"), 
+            dataset %in% c("ch-8", "no-7", "no-4", "dk-7", "se-7", "se-4", "us-4", "gl-7", "world-2"),
+            modules %in% c("geo"), # modules %in% c("data","geo"),
+            nchar(language) %in% c(2,3))
   
   api_url <- paste0(paste0("http://api.thenmap.net/", version, "/", dataset, "/", modules, "/", date, 
                            "?gep_props=name&language=", language))
@@ -43,7 +46,7 @@ request_API <- function(version,dataset,modules,date,language) {
     
     if(modules == "data"){
       
-      myData <- fromJSON(file="http://api.thenmap.net/v2/se-7/data/1974?data_props=area|name&language=se")
+      myData <- rjson::fromJSON(file=api_url)
       data_frame_json <- as.data.frame(myData)
       # str(data_frame_json) # still needs to be formated a little bit
       
@@ -67,4 +70,43 @@ request_API <- function(version,dataset,modules,date,language) {
 # 
 # requested_data <- request_API(version,dataset,modules,date,language)
 
+
+####
+
+
+# version <- "v2" # v1, v2
+# dataset <- "se-7" # ch-8 no-7 no-4 dk-7 se-7 se-4 us-4 gl-7 world-2
+# modules <- "data" # data (info) geo (svg)
+# date <- "1974" # YYYY-MM-DD, YYYY-MM, or YYYY
+# language <- "se"
+# 
+# 
+# 
+# api_url <- paste0(paste0("http://api.thenmap.net/", version, "/", dataset, "/", modules, "/", date, 
+#                          "?gep_props=name&language=", language))
+# 
+# response <- GET(api_url)
+# 
+# 
+# myData <- rjson::fromJSON(file=api_url)
+# data_frame_json <- as.data.frame(myData)
+# 
+# 
+# length(data_frame_json)
+# 
+# odd <- seq(1,(length(data_frame_json)),2)
+# even <- seq(2,(length(data_frame_json)),2)
+# 
+# 
+# col1 <- unname(unlist(data_frame_json[,odd]))
+# col2 <- unname(unlist(data_frame_json[,even]))
+# 
+# 
+# data <- data.frame(col1,col2)
+# names(data) <- c(names(data_frame_json[1]), names(data_frame_json[2]))
+# head(data)
+# 
+# head(data_frame_json)
+# 
+# 
 

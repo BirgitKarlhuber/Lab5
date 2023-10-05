@@ -15,6 +15,8 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
+# devtools::install_github("BirgitKarlhuber/Lab5")
+
 library(Lab5)
 library(sf)
 library(ggplot2)
@@ -24,6 +26,70 @@ library(rjson)
 
 Most of this information is available scattered throughout the R documentation. This appendix brings it all together in one place. 
 
-This package collects data from https://www.thenmap.net/ and lets the user choose 
-which spatial data to plot through different parameters such as "version", "dataset", "modules", "date" and "language".
+With the help of this package it is possible to request data from the Thenmap API (\url{https://www.thenmap.net/}). The function request_API() takes multiple arguments: "version", "dataset", "modules", "date" and "language". With this arguments can the user specify the request. For "modules" there are two possible options: "data" and "geo". With the option "geo" the API returns geo-data. This data can be plotted with the help of the plot_sf_data() function. 
+
+
+## simple "geo" example
+We'll start by creating a simple request for a "geographical" dataset. 
+
+### specify argument and call function request_API
+Each of the five arguments has multiple options available: \newline
+- **version**: v1, v2 \newline
+- **dataset**: ch-8, no-7, no-4, dk-7, se-7, se-4, us-4, gl-7, world-2 \newline
+- **modules**: data, geo \newline
+- **date**: Needs to be of format YYYY-MM-DD, YYYY-MM, or YYYY \newline
+- **language**: fi, ... (not each of the languages is available for all of the datasets) \newline
+
+We are requesting a dataset of all national borders, of areas which existed at 1st January 2016, in english language. 
+```{r}
+
+version <- "v1"
+dataset <- "world-2"
+modules <- "geo"
+date <- "2016-01-01"
+language <- "en"
+
+# request_API <- getFromNamespace("request_API", "Lab5")
+requested_data <- request_API(version,dataset,modules,date,language)
+
+```
+
+
+### plot the data
+By using the plot_sf_data() function it is possible to plot the requested data in a geographical plot. 
+```{r}
+
+Lab5::plot_sf_data(requested_data)
+
+```
+
+
+
+## simple "data" example
+Now we'll create a simple request for a "data" dataset. 
+
+
+### specify argument and call function request_API
+We are requesting a dataset of all Swedish municipalities and their areas and names, in 1974, in Sami language. 
+```{r}
+
+version <- "v2" 
+dataset <- "se-7" 
+modules <- "data" 
+date <- "1974" 
+language <- "se"
+
+Lab5::requested_data <- request_API(version,dataset,modules,date,language)
+
+```
+
+
+### Visualize the data
+
+```{r}
+
+# Lab5::xx
+
+```
+
 

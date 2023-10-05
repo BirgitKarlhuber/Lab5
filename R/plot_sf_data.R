@@ -22,7 +22,7 @@
 # library(ggplot2)
 
 plot_sf_data <- function(sf_data){
-  stopifnot(class(sf_data)[1] == "sf")
+  # stopifnot(class(sf_data)[1] == "sf")
   
   # plot the spatial data
   ggplot() +
@@ -30,3 +30,4 @@ plot_sf_data <- function(sf_data){
     ggtitle("Map Plot") +
     theme_minimal()
 }
+

@@ -73,13 +73,13 @@ Now we'll create a simple request for a "data" dataset.
 We are requesting a dataset of all Swedish municipalities and their areas and names, in 1974, in Sami language. 
 ```{r}
 
-version <- "v2" 
-dataset <- "se-7" 
-modules <- "data" 
-date <- "1974" 
-language <- "se"
-
-Lab5::requested_data <- request_API(version,dataset,modules,date,language)
+# version <- "v2" 
+# dataset <- "se-7" 
+# modules <- "data" 
+# date <- "1974" 
+# language <- "se"
+# 
+# Lab5::requested_data <- request_API(version,dataset,modules,date,language)
 
 ```
 

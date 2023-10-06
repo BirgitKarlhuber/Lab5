@@ -5,11 +5,9 @@ test_that("function rejects errounous input", {
  
 })
 
-
-# change them 
 test_that("outputs are correct", {
-  expect_equal(round(request_API("v2","world-2","geo","2016-01-01","fi")$geometry[[1]][[1]][[1]][1:3,],2),
+  expect_equal(round(request_API("world-2", "2016-01-01")$geometry[[1]][[1]][[1]][1:3,],2),
                round(rbind(c(-58.17262, 6.812218),c(-57.96667, 6.775418), c(-57.51919,6.270764)),2))
-  expect_equal(length(request_API("v2","ch-8","geo","2016-01-01","de")$id), 2310)
+  expect_equal(length(request_API("ch-8", "2000-01-01")$id), 2613)
 })
 

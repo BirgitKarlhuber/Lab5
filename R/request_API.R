@@ -46,6 +46,12 @@ request_API <- function(dataset,date) {
 
 # dataset <- "world-2" # ch-8 no-7 no-4 dk-7 se-7 se-4 us-4 gl-7 world-2
 # date <- "2016-01-01" # YYYY-MM-DD, YYYY-MM, or YYYY
-
+# 
 # requested_data <- request_API(dataset,date)
-
+# 
+# library(ggplot2)
+# 
+# ggplot() +
+#   geom_sf(data = requested_data) +
+#   ggtitle("Map") +
+#   theme_minimal()

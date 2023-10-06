@@ -4,18 +4,12 @@
 \alias{request_API}
 \title{Fetch data from Thenmaps}
 \usage{
-request_API(version, dataset, modules, date, language)
+request_API(dataset, date)
 }
 \arguments{
-\item{version}{There are two version of the data available "v1" and "v2".}
-
 \item{dataset}{The dataset is a area-level. For the area, the ISO 3166 codes where available was used, and for level, the ten levels of administrative borders from Open Streetmap was used.}
 
-\item{modules}{There are 4 different modules available: data, info, geo, svg}
-
 \item{date}{Can be on the form YYYY-MM-DD, YYYY-MM, or YYYY. The output will include only areas that existed at that very date. Dates in the database are local time and inclusive, meaning that 1947-03-01 will include a nation that gained independence on April 1 1947, according to the local timezone. 2011-05 will be interpreted as 2001-05-01, and 2011 will be interpreted as 2001-01-01.}
-
-\item{language}{Some parts of the data are available in different languages, such as names of political entities.}
 }
 \value{
 The function returns the requested dataset.
@@ -25,7 +19,7 @@ This function can be used to fetch data from the Thenmaps-API.
 }
 \examples{
 library(Lab5)
-requested_data <- request_API("v1","world-2","geo","2016-01-01","fi")
+requested_data <- request_API("world-2", "2016-01-01")
 
 }
 \seealso{

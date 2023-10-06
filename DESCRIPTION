@@ -3,10 +3,10 @@ Type: Package
 Title: Lab 5 - Fetch from Thenmaps-API
 Version: 1.0
 Date: 2023-10-02
-Depends: R (>= 3.4), ggplot2, httr, sf, rjson
+Depends: R (>= 3.4), httr, sf, rjson
 Author: Birgit Karlhuber <birgit@karlhuber.net> and Daniele Bozzoli <danbo826@student.liu.se>
 Maintainer: Birgit Karlhuber <birgit@karlhuber.net> and Daniele Bozzoli <danbo826@student.liu.se>
-Description: This package can be used to fetch data from the Thenmaps-API and to plot the recieved geo-data. 
+Description: This package can be used to fetch data from the Thenmaps-API to recieve geo-data. 
 License: GPL (>= 2) | file LICENCE
 Suggests: 
     knitr,

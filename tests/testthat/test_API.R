@@ -1,8 +1,11 @@
 
 test_that("function rejects errounous input", {
   expect_error(request_data <- request_API("at-3", "2016-01-01"))
-  # expect_error(request_data <- request_API("world-2","01-01-2016"))
- 
+  expect_error(request_data <- request_API("world-2","01-01-2016"))
+  expect_error(request_data <- request_API("world-2","01-2016"))
+  expect_error(request_data <- request_API("world-2","2016-31-01"))
+  expect_error(request_data <- request_API("world-2","2016-01-44"))
+  expect_error(request_data <- request_API("world-2","2016/01/01"))
 })
 
 test_that("outputs are correct", {

@@ -27,6 +27,23 @@ request_API <- function(dataset,date) {
   
   stopifnot(dataset %in% c("ch-8", "no-7", "no-4", "dk-7", "se-7", "se-4", "us-4", "gl-7", "world-2"))
   
+  # check format of the date
+  if(nchar(date) == 10){
+    stopifnot(substr(date,5,5) == "-", substr(date,8,8) == "-",
+              as.numeric(substr(as.Date(date),9,10)) %in% c(1:31),
+              as.numeric(substr(as.Date(date),6,7)) %in% c(1:12),
+              as.numeric(substr(as.Date(date),1,4)) %in% c(1000:2100)
+    )
+  } else if(nchar(date) == 7){
+    stopifnot(substr(date,5,5) == "-", 
+              as.numeric(substr(as.Date(date),6,7)) %in% c(1:12),
+              as.numeric(substr(as.Date(date),1,4)) %in% c(1000:2100))
+  } else {
+    stopifnot(nchar(date) == 4,
+              as.numeric(substr(as.Date(date),1,4)) %in% c(1000:2100))
+    
+  }
+  
   api_url <- paste0(paste0("http://api.thenmap.net/v1/", dataset, "/geo/", date, 
                            "?gep_props=name&language=en"))
   
@@ -43,4 +60,3 @@ request_API <- function(dataset,date) {
     stop("Error fetching data with status code: ", status_code(response))
   }
 }
-

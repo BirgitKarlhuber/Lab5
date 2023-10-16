@@ -8,7 +8,9 @@
 #' 
 #' @return The function returns the requested dataset.
 #' 
-#' @import sf, httr, rjson
+#' @import sf 
+#' @import httr 
+#' @import rjson
 #' 
 #' @export
 #' 

@@ -29,6 +29,8 @@ request_API <- function(dataset,date) {
   
   stopifnot(dataset %in% c("ch-8", "no-7", "no-4", "dk-7", "se-7", "se-4", "us-4", "gl-7", "world-2"))
   
+  date <- as.character(date)
+  
   # check format of the date
   if(nchar(date) == 10){
     stopifnot(substr(date,5,5) == "-", substr(date,8,8) == "-",
@@ -62,3 +64,4 @@ request_API <- function(dataset,date) {
     stop("Error fetching data with status code: ", status_code(response))
   }
 }
+

@@ -15,7 +15,6 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-# devtools::install_github("BirgitKarlhuber/Lab5")
 
 library(Lab5)
 library(sf)
